@@ -280,3 +280,50 @@ bool move(int tile)
 
     return false;
 }
+
+/**
+ * Returns true if game is won (i.e., board is in winning configuration), 
+ * else false.
+ */
+
+bool won(void)
+{
+
+    int block = 1;
+    int count = 0;
+
+    for(int i = 0; i < dim; i++)
+    {
+        for(int j = 0; j < dim; j++)
+        {
+            if ((i != (dim - 1)) || (j != (dim - 1)))
+            {
+                if (board[i][j] == block)
+                {
+                    block++;
+                    count++;
+                }
+
+                else
+                {
+                    block++;
+                }
+            }
+ 
+            else if (i == (dim - 1) && j == (dim - 1))
+            {
+                if (board[i][j] == 0)
+                {
+                    count++;
+                }
+            }
+        }
+    }
+
+    if (count == (dim * dim))
+    {
+        return true;
+    }
+    return false;
+}
+
