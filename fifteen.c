@@ -189,3 +189,31 @@ void init(void)
         board[dim - 1][dim - 2] = 2;
     }
 }
+
+/**
+ * Prints the board in its current state.
+ */
+
+void draw(void)
+{
+    int ascii = 95;
+    for(int i = 0;i < dim; i++)
+    {
+        for(int j = 0; j < dim; j++)
+        {
+            if (board[i][j] == 0) 
+            {
+                printf("%2c",ascii);
+            }
+            else
+            {
+                printf("%2i",board[i][j]);
+            }    
+        }
+
+        printf("\n");
+
+    }
+
+    printf("\n"); 
+}
