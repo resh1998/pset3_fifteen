@@ -165,3 +165,27 @@ void greet(void)
     usleep(2000000);
 }
 
+/**
+ * Initializes the game's board with tiles numbered 1 through d*d - 1
+ * (i.e., fills 2D array with values but does not actually print them).  
+ */
+
+void init(void)
+{
+
+    int val = (dim * dim) - 1;
+    for(int i = 0; i < dim; i++)
+    {
+        for(int j = 0; j < dim; j++)
+        {
+            board[i][j] = val;
+            val--; 
+        }
+    }
+
+    if (dim % 2 == 0)
+    {
+        board[dim - 1][dim - 3] = 1;
+        board[dim - 1][dim - 2] = 2;
+    }
+}
