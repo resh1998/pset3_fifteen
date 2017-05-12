@@ -217,3 +217,66 @@ void draw(void)
 
     printf("\n"); 
 }
+
+/**
+ * If tile borders empty space, moves tile and returns true, else
+ * returns false. 
+ */
+
+bool move(int tile)
+{
+    // location of underscore 
+    for(int i = 0; i < dim; i++)
+    {
+        for(int j = 0; j < dim; j++)
+        {
+            if (board[i][j] == 0)
+            {
+                // location of tile
+                for(int x = 0; x < dim; x++)
+                {
+                    for(int y = 0; y < dim; y++)
+                    {
+                        if (board[x][y] == tile)
+                        {
+                            int temp;
+                            if (x == i && (y == (j + 1)))
+                            {
+                                temp = board[i][j];
+                                board[i][j] = board[x][y];
+                                board[x][y] = temp;
+                                return true;
+                            }
+
+                            else if (x == i && (y == (j - 1)))
+                            {
+                                temp = board[i][j];
+                                board[i][j] = board[x][y];
+                                board[x][y] = temp;
+                                return true;    
+                            }
+
+                            else if( j == y && (x == (i + 1)))
+                            {
+                                temp = board[i][j];
+                                board[i][j] = board[x][y];
+                                board[x][y] = temp;
+                                return true;     
+                            }
+
+                            else if (j == y && (x == (i - 1)))
+                            {
+                                temp = board[i][j];
+                                board[i][j] = board[x][y];
+                                board[x][y] = temp;
+                                return true;
+                            }
+                        }   
+                    }
+                }
+            }
+        }
+    }
+
+    return false;
+}
